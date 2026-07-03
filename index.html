@@ -109,20 +109,68 @@
 </div>
 
 <script>
-// ============ TARGETS / META ============
 const TARGETS={THA:15,MYS:13,TWN:20,IDN:19,SGP:23,USA:13,VNM:16,MEX:13,BRA:13,KOR:23,HKG:20,PHL:18,JPN:16,AUS:18,CAN:12,GBR:28};
 const FLAG={THA:'🇹🇭',MYS:'🇲🇾',TWN:'🇹🇼',IDN:'🇮🇩',SGP:'🇸🇬',USA:'🇺🇸',VNM:'🇻🇳',MEX:'🇲🇽',BRA:'🇧🇷',KOR:'🇰🇷'};
 const CNAME={THA:'Thailand',MYS:'Malaysia',TWN:'Taiwan',IDN:'Indonesia',SGP:'Singapore',USA:'United States',VNM:'Vietnam',MEX:'Mexico',BRA:'Brazil',KOR:'Korea'};
 const PFX='iQIYI_iQIYI_NEW_AEO_IOS_';
 
-// ============ DATA (append a new block to add a future week) ============
-// ov:  {CC:[spend, installs, roas%, vt%]}
-// camp:{CC:[[title, spend, installs, cpi, roas%, vt%], ...]}
-// ctype:{CC:[[type, spend, installs, roas%, vt%], ...]}
-// crea:{CC:[[title, type, size, lenSec|null, spend, installs, roas%, vt%], ...]}
-// pub: {CC:[[name, bundle, spend, installs, roas%, vt%], ...]}
-// note:{CC:'optional override note'}; ins:{CC:'insight'}
 const DATA={
+"2026/06/25 – 07/01":{
+ prev:"2026/06/18 – 06/24",
+ totals:{spend:23324.50,installs:16157,roas:21.54,vt:39.28},
+ summary:"本周总投放 $23.3K（环比 +2.1%）、16.2K 安装（+12%），综合 D7 KPI ROAS 大幅回升到 <b>21.54%</b>（环比 +8.1pp，三周新高）。8 国中 <b>6 国达标</b>（MYS/THA/TWN/VNM/SGP/USA）——TWN（31.3%）、VNM（34.0%）、USA（42.2%）尤其强，<b>SGP 从垫底 4.17% 反弹到压线达标 23.01%</b>。仅 <b>IDN（14.09% vs 19%）与 KOR（冷启动）未达标</b>。结构上 NATIVE_VIDEO 与 IMAGE/NATIVE_IMAGE 持续跑赢纯 VIDEO；新上的 D28 优化 campaign（MY / TW）开始贡献。",
+ ov:{MYS:[5422.62,2619,16.92,28.33],IDN:[4885.99,3538,14.09,28.83],THA:[4649.64,5738,19.91,39.06],TWN:[3915.28,1409,31.32,60.26],VNM:[1406.79,2002,34.00,53.55],SGP:[1239.94,334,23.01,18.26],USA:[1114.44,427,42.16,83.84],KOR:[689.80,90,4.70,4.44]},
+ camp:{
+  MYS:[[PFX+"MY_HT_1212_purchase_Moloco_VID",4477.91,1641,2.73,12.22,8.04],[PFX+"MY_HT_0226_purchase_Moloco_VID_D28",594.67,382,1.56,21.86,4.19],[PFX+"MY_HT_1212_purchase_Moloco_IMG",350.03,596,0.59,68.52,99.66]],
+  IDN:[[PFX+"ID_HT_1222_purchase_Moloco_VID",4612.02,2701,1.71,9.21,7.07],[PFX+"ID_HT_0213_purchase_Moloco_IMG",273.97,837,0.33,96.35,99.04]],
+  THA:[[PFX+"TH_HT_0205_purchase_Moloco_VID",4299.22,3818,1.13,14.83,8.93],[PFX+"TH_HT_1212_purchase_Moloco_IMG",350.43,1920,0.18,82.19,98.96]],
+  TWN:[[PFX+"TW_HT_0203_purchase_Moloco_VID",2251.20,500,4.50,23.51,5.00],[PFX+"TW_HT_1212_purchase_Moloco_IMG",1400.46,826,1.70,46.36,98.91],[PFX+"TW_HT_0626_purchase_Moloco_VID_D28",263.62,83,3.18,18.05,8.43]],
+  VNM:[[PFX+"VN_HT_0206_purchase_Moloco_VID",1056.98,969,1.09,23.21,4.95],[PFX+"VN_HT_0213_purchase_Moloco_IMG",349.81,1033,0.34,66.61,99.13]],
+  SGP:[[PFX+"SG_HT_0206_purchase_Moloco_VID",1239.94,334,3.71,23.01,18.26]],
+  USA:[[PFX+"US_HT_1028_purchase_Moloco_IMG",702.02,351,2.00,56.12,99.72],[PFX+"US_HT_0205_purchase_Moloco_VID",412.42,76,5.43,18.40,10.53]],
+  KOR:[[PFX+"KR_HT_0213_purchase_Moloco_VID",689.80,90,7.66,4.70,4.44]]
+ },
+ ctype:{
+  MYS:[["VIDEO",3519.34,900,8.24,10.89],["NATIVE_VIDEO",1553.25,1123,24.94,4.45],["NATIVE_IMAGE",176.01,311,71.25,100],["IMAGE",174.02,285,65.77,99.30]],
+  IDN:[["VIDEO",3124.30,911,4.43,13.50],["NATIVE_VIDEO",1487.72,1790,19.24,3.80],["IMAGE",188.23,548,81.19,99.09],["NATIVE_IMAGE",85.73,289,129.63,98.96]],
+  THA:[["NATIVE_VIDEO",2220.62,2653,19.67,4.03],["VIDEO",2078.60,1165,9.66,20.09],["IMAGE",260.49,1371,55.93,98.91],["NATIVE_IMAGE",89.94,549,158.25,99.09]],
+  TWN:[["NATIVE_VIDEO",1396.65,445,29.66,5.39],["VIDEO",1118.17,138,14.55,5.80],["NATIVE_IMAGE",1109.83,615,47.38,98.54],["IMAGE",290.63,211,42.45,100]],
+  VNM:[["VIDEO",660.27,413,19.42,8.23],["NATIVE_VIDEO",396.70,556,29.51,2.52],["IMAGE",225.20,626,73.31,99.20],["NATIVE_IMAGE",124.61,407,54.52,99.02]],
+  SGP:[["VIDEO",965.88,212,25.75,26.89],["NATIVE_VIDEO",274.06,122,13.36,3.28]],
+  USA:[["IMAGE",619.91,313,63.23,99.68],["NATIVE_VIDEO",230.02,49,23.44,2.04],["VIDEO",182.40,27,12.04,25.93],["NATIVE_IMAGE",82.10,38,2.42,100]],
+  KOR:[["VIDEO",542.43,56,3.67,5.36],["NATIVE_VIDEO",147.37,34,8.50,2.94]]
+ },
+ crea:{
+  MYS:[["CHIXIA_0623_MY_yangyuntian_7201280_video_MUSE_295814_JCKD_FJJBJ.mp4","VIDEO","360x640",10,1264.48,303,5.91,1.98],["CHIXIA_0623_MY_yangyuntian_720720_video_MUSE_295813_JCKD_FJJBJ.mp4","VIDEO","640x640",10,283.98,69,10.25,7.25],["CHIXIA_0623_MY_yangyuntian_720720_video_MUSE_295822_JCKD_FJJBJ.mp4","VIDEO","640x640",47,279.05,57,2.41,26.32],["CHIXIA_0623_MY_yangyuntian_7201280_video_MUSE_295823_JCKD_FJJBJ.mp4","VIDEO","360x640",47,206.86,49,18.00,0.00],["PZZZX_0612_MY_luojing_7201280_video_MUSE_273217_JCKD_FJJBJ.mp4","NATIVE_VIDEO","360x640",9,155.55,180,71.70,6.11]],
+  IDN:[["CHIXIA_0623_ID_yangyuntian_7201280_video_MUSE_295757_JCKD_FJJBJ.mp4","VIDEO","360x640",20,341.81,101,3.83,0.99],["ZMTS_0623_ID_zhangjingfang_720720_video_MUSE_296870_JCKD_FJJBJ.mp4","VIDEO","640x640",98,326.40,87,2.21,4.60],["CHIXIA_0623_ID_yangyuntian_720720_video_MUSE_295753_JCKD_FJJBJ.mp4","NATIVE_VIDEO","640x640",10,271.06,295,14.11,2.37],["CHIXIA_0623_ID_yangyuntian_720720_video_MUSE_295756_JCKD_FJJBJ.mp4","VIDEO","640x640",20,211.15,60,2.20,13.33],["ZMTS_0623_ID_zhangjingfang_7201280_video_MUSE_296689_JCKD_FJJBJ.mp4","VIDEO","360x640",10,206.76,30,1.03,0.00]],
+  THA:[["TYDBGTH_0611_TH_yinyue_7201280_video_MUSE_273024_HLMIX_FJJBJ.mp4","VIDEO","360x640",40,517.52,244,9.50,2.05],["TYDBGTH_0611_TH_yinyue_1280720_video_MUSE_273022_HLMIX_FJJBJ.mp4","NATIVE_VIDEO","640x360",40,399.94,363,16.19,3.58],["佳偶天成泰语版_20260430_1min_236004.mp4","VIDEO","640x360",57,392.30,223,11.39,30.04],["FZLG_0518_TH_zhangjingfang_720720_video_MUSE_4_JCKD.mp4","NATIVE_VIDEO","640x640",20,222.11,338,20.12,5.62],["TYDBGTH_0611_TH_yinyue_7201280_video_MUSE_273005_HLMIX_FJJBJ.mp4","NATIVE_VIDEO","360x640",10,179.20,248,12.15,3.23]],
+  TWN:[["ZHUYU_0305_ENTW_liyang_1200628_pic_ART_5_GIF.gif","NATIVE_IMAGE","1200x628",null,1109.83,615,47.38,98.54],["NBDA_0623_EN_chenqiuyu_720720_video_MUSE_296995_JCKD_FJJBJ.mp4","VIDEO","640x640",19,435.31,56,25.40,8.93],["NBDA_0623_EN_chenqiuyu_7201280_video_MUSE_296996_JCKD_FJJBJ.mp4","VIDEO","360x640",19,229.12,18,1.67,0.00],["ZHUYU_0409_ENTW_liyang_720720_video_ART_1_JCKD.mp4","NATIVE_VIDEO","640x640",58,155.95,54,16.42,7.41],["ZHUYU_0305_ENTW_liyang_720720_video_MUSE_6_JCKD.mp4","NATIVE_VIDEO","640x640",130,153.86,43,19.01,0.00]],
+  VNM:[["CHIXIA_0623_VN_yangyuntian_720720_video_MUSE_295735_JCKD_FJJBJ.mp4","VIDEO","640x640",10,246.74,114,18.17,4.39],["CHIXIA_0623_VN_yangyuntian_720720_video_MUSE_295744_JCKD_FJJBJ.mp4","VIDEO","640x640",47,102.55,80,2.49,3.75]],
+  SGP:[["ZMTS_0623_EN_zhangjingfang_720720_video_MUSE_296685_JCKD_FJJBJ.mp4","VIDEO","640x640",10,237.71,70,42.44,22.86]],
+  USA:[["ZHUYU_0305_ENES_liyang_32050_pic_ART_2_GIF.gif","IMAGE","320x50",null,564.44,284,66.44,99.65]]
+ },
+ pub:{
+  MYS:[["Pinterest","429047995",1262.51,973,26.90,5.14],["BeReal","1459645446",300.75,109,9.48,3.67],["MiChat","1436584861",275.42,74,5.54,54.05],["Tinder","547702041",204.86,76,20.61,5.26],["Lok lok","6761259426",175.23,111,5.13,1.80],["eFootball","1117270703",101.53,31,24.48,0.00],["Block Blast!","1617391485",90.35,137,92.66,99.27],["Flashscore","766443283",72.93,14,6.16,28.57]],
+  IDN:[["Pinterest","429047995",1422.89,1702,19.23,4.11],["DramaReels","6738081517",153.03,51,0.70,1.96],["NetShort","6504849169",113.09,29,3.07,0.00],["MiChat","1436584861",89.95,48,4.73,81.25],["美图秀秀","416048305",88.49,51,3.86,66.67],["Block Blast!","1617391485",85.47,276,51.23,99.28],["Hay Day","506627515",81.15,23,3.38,0.00],["Flashscore","766443283",78.24,43,7.44,95.35]],
+  THA:[["Pinterest","429047995",1959.98,2470,19.64,4.98],["Locket Widget","1600525061",276.07,148,5.59,2.03],["Tinder","547702041",258.46,166,10.46,4.22],["WEBTOON","894546091",257.74,135,14.10,66.67],["Block Blast!","1617391485",117.89,671,102.97,99.25],["美图秀秀","416048305",105.29,158,27.17,70.89],["Hornet","462678375",99.45,81,12.16,23.46],["InShot","997362197",51.52,33,15.25,9.09]],
+  TWN:[["TimeTree","952578473",892.60,236,34.01,9.32],["(未识别 / in-house)","10000001",820.33,398,42.39,97.74],["Pinterest","429047995",443.48,180,23.48,3.89],["Block Blast!","1617391485",213.44,171,50.36,100],["Grindr","319881193",99.02,15,3.85,33.33],["Locket Widget","1600525061",53.18,13,4.88,7.69],["DramaWave","6670430706",47.61,2,8.02,0.00],["Travel Town","1521236603",27.64,3,27.61,0.00]],
+  VNM:[["Locket Widget","1600525061",510.19,351,11.54,2.56],["Pinterest","429047995",306.38,463,35.86,3.02],["Block Blast!","6757412443",64.18,255,100.43,98.43],["美图秀秀","416048305",46.33,113,53.57,92.04],["Block Blast!","1617391485",44.39,146,80.39,99.32],["Rakuten Viber","382617920",27.50,66,41.93,96.97],["Grindr","319881193",20.75,11,0.00,54.55],["MangaToon","1385287093",16.26,21,171.03,19.05]],
+  SGP:[["Pinterest","429047995",195.38,79,10.35,5.06],["Carousell","548607187",192.24,65,19.51,38.46],["The Straits Times","547465441",139.12,49,84.94,10.20],["Lianhe Zaobao","654946831",43.45,12,30.53,8.33],["OneFootball","382002079",35.32,4,0.00,25.00],["TimeTree","952578473",19.59,8,35.89,0.00],["MiChat","1436584861",12.85,8,11.98,50.00]],
+  USA:[["Block Blast!","1617391485",145.41,76,186.32,98.68],["Pinterest","429047995",121.06,27,28.04,3.70],["Pocket FM","1538433480",71.44,22,30.75,27.27],["Wordscapes","1207472156",49.13,18,0.00,100],["Screwdom","6740043080",24.69,8,0.00,100],["Kik","357218860",23.28,4,0.00,0.00],["Words With Friends","1196764367",22.63,19,75.03,100]],
+  KOR:[["Pinterest","429047995",128.15,28,9.78,3.57],["토스","839333328",116.58,11,4.27,18.18],["Candy Crush Saga","553834731",28.22,1,0.00,0.00],["Block Blast!","1617391485",15.50,0,0.00,0.00],["캐시워크","1220307907",15.45,1,0.00,0.00],["DramaWave","6670430706",15.30,3,0.00,0.00]]
+ },
+ note:{KOR:"KOR 本周仍在冷启动，单素材 spend 小、未进入全局 Top 素材榜，故未单列具体素材；建议积累学习数据后再评估。"},
+ ins:{
+  MYS:"达标 16.92%（t13）。VIDEO 仍占大头但回收 8.24%，NATIVE_VIDEO 升到 24.94%；新 CHIXIA 系列头部素材 295814（$1,264 / 5.91%）效率仍偏低，建议缩量。IMAGE/NATIVE_IMAGE（65–71%）高效。新增 D28 优化 campaign（21.86%）表现不错。",
+  IDN:"⚠️ 本周唯一主力未达标（14.09% vs 19%）。VIDEO（4.43%）拖累，长视频（98s ZMTS、20s CHIXIA）低效；NATIVE_VIDEO（19.24%）与 IMAGE/NATIVE_IMAGE（81–130%）好很多，ID_0213_IMG campaign 回收 96%。建议继续压 VIDEO、扩 IMG。",
+  THA:"达标且大幅改善（19.91% vs 15%，上周才 14.39%）。NATIVE_VIDEO（19.67%）成主力且回收稳，IMAGE/NATIVE_IMAGE 56–158%。TYDBGTH 系列走量。",
+  TWN:"强势达标并环比大涨（31.32% vs 20%，上周 16.66%）。IMG campaign（46.36%）+ NATIVE_IMAGE GIF（47.38%）+ NATIVE_VIDEO（29.66%）全线走强；新 D28 campaign 已开跑。",
+  VNM:"持续达标且走高（34.00% vs 16%）。IMAGE（73.31%）与 NATIVE_VIDEO（29.51%）强，VID 也升到 19.42%。长尾供给回收亮眼。",
+  SGP:"🎉 终于达标（23.01% vs 23%，压线），较上周 4.17% 大幅反弹——本周 VIDEO 回收跳到 25.75%，ZMTS 单素材 42%。仍无 IMAGE 素材，可继续补；The Straits Times 供给 84.94% 亮眼。",
+  USA:"强达标（42.16% vs 13%）。IMAGE（63.23%）+ GIF banner + Block Blast（186%）拉动，VID 也回正。",
+  KOR:"仍冷启动、未达标（4.70% vs 23%），$690 spend / 90 安装 / CPI $7.66；以 VIDEO 为主但回收弱，样本仍小，继续观察。"
+ }
+},
 "2026/06/18 – 06/24":{
  prev:"2026/06/04 – 06/10",
  totals:{spend:22835.90,installs:14381,roas:13.44,vt:33.38},
@@ -161,18 +209,18 @@ const DATA={
   MYS:[["Pinterest","429047995",826.19,832,28.99,3.73],["MiChat","1436584861",312.33,76,0.72,50.00],["Lok lok-Watch Drama Movies,TV","6761259426",308.57,155,1.45,3.23],["BeReal","1459645446",215.42,99,8.02,0.00],["Tinder","547702041",146.66,59,5.96,0.00],["Flashscore","766443283",97.62,32,21.62,25.00],["Block Blast!","1617391485",87.26,152,40.16,100]],
   THA:[["Pinterest","429047995",1721.85,2140,16.89,3.74],["Tinder","547702041",252.30,140,5.28,5.71],["Locket Widget","1600525061",242.87,118,7.50,2.54],["Hornet","462678375",128.17,75,10.68,22.67],["美图秀秀","416048305",127.07,121,12.61,56.20],["Block Blast!","1617391485",109.40,544,74.39,99.45],["ВКонтакте","564177498",79.36,65,79.27,0.00]],
   IDN:[["Pinterest","429047995",1350.70,1912,21.99,3.66],["DramaReels","6738081517",200.25,56,3.42,1.79],["NetShort","6504849169",98.65,30,4.47,0.00],["MiChat","1436584861",91.44,53,16.17,73.58],["Flashscore","766443283",74.35,41,6.55,82.93],["Hay Day","506627515",69.49,18,1.59,5.56],["美图秀秀","416048305",55.51,24,6.69,0.00]],
-  TWN:[["(未识别 / in-house)","10000001",809.13,273,36.09,95.24],["TimeTree","952578473",624.71,144,7.18,14.58],["Pinterest","429047995",350.84,138,16.13,3.62],["Block Blast!","1617391485",199.25,144,39.74,99.31],["Grindr","319881193",145.60,19,41.28,42.11],["千尋瀏覽器","6752930640",38.12,3,0.00,0.00],["Locket Widget","1600525061",29.39,11,0.00,0.00]],
-  VNM:[["Locket Widget","1600525061",536.32,390,13.14,2.56],["Pinterest","429047995",207.67,345,8.79,5.80],["Block Blast!","6757412443",57.80,218,26.72,99.54],["Block Blast!","1617391485",52.74,188,104.12,97.87],["美图秀秀","416048305",47.35,96,10.87,91.67],["Candy Crush Saga","553834731",46.23,22,5.61,0.00],["Rakuten Viber","382617920",27.40,41,13.17,92.68]],
-  USA:[["Pinterest","429047995",220.03,27,10.44,3.70],["Block Blast!","1617391485",120.46,75,46.42,100],["Pocket FM","1538433480",101.73,19,7.85,5.26],["Wordscapes","1207472156",70.61,29,16.95,100],["Kik","357218860",43.49,9,18.37,0.00],["NewsBreak","1132762804",40.07,2,0.00,0.00],["SmartNews","579581125",34.86,2,0.00,0.00]],
+  TWN:[["TimeTree","952578473",672.88,162,31.43,12.96],["Block Blast!","1617391485",364.83,201,48.99,100],["Pinterest","429047995",288.14,94,18.21,3.19],["Grindr","319881193",128.86,23,64.66,13.04],["Color Block Jam","6504332779",48.75,7,7.83,57.14],["Block Crush!","1638139403",42.57,1,8.96,0.00]],
+  VNM:[["Locket Widget","1600525061",312.44,140,3.44,2.86],["Pinterest","429047995",83.36,83,18.47,15.66],["Candy Crush Saga","553834731",59.62,14,0.00,0.00],["Block Blast!","1617391485",53.04,101,20.41,95.05],["Block Blast!","6757412443",46.66,122,16.41,95.90],["美图秀秀","416048305",46.50,70,34.25,78.57]],
+  USA:[["Block Blast!","1617391485",127.01,77,17.79,97.40],["SmartNews","579581125",86.22,5,0.00,20.00],["Wordscapes","1207472156",71.50,26,22.35,100],["Pocket FM","1538433480",44.20,7,22.58,14.29],["MyFitnessPal","341232718",38.44,17,5.18,100],["Pinterest","429047995",34.70,9,12.72,0.00]],
   SGP:[["BeReal","1459645446",363.82,59,1.93,0.00],["TimeTree","952578473",348.48,51,2.02,1.96],["Pinterest","429047995",143.71,52,14.66,5.77],["Tumblr","305343404",67.66,7,0.00,0.00],["Carousell","548607187",64.98,21,0.00,9.52],["Locket Widget","1600525061",37.27,7,0.00,14.29],["Macadam","1633296501",33.02,2,21.30,0.00]],
   KOR:[["Pinterest","429047995",21.80,4,0.00,0.00],["토스","839333328",18.14,0,0.00,0.00],["Candy Crush Saga","553834731",6.08,0,0.00,0.00],["MEEFF","1064381508",3.93,0,0.00,0.00]]
  },
  ins:{
-  MYS:"投放与上周持平，但 ROAS 滑落到 11.92%（接近 t13）。VIDEO 仍占 74% spend 而回收仅 5.89%；头部视频 273216（$1,144 / 5.87%）效率低。NATIVE_IMAGE/IMAGE（33–53%）高效。新增竞品供给「Lok lok」量大但 ROAS 仅 1.45%，建议观察。",
-  THA:"与 MYS 并列最大市场；ROAS 14.39%（接近 t15），较上周 14.14% 微升但仍差一口气。新短视频系列 TYDBGTH（9–18s）走量但回收偏低，NATIVE_IMAGE/IMAGE（47–86%）与 Block Blast、ВКонтакте 供给是效率亮点。",
-  IDN:"⚠️ 本周最大隐忧：spend 近翻倍（$2.5K→$4.4K）但 ROAS 从 21.87% 崩到 10.44%（🔴 t19）。115–119s 超长视频（273568、AINI MUSE_1）烧掉约 $1,240 却 <4% 回收。NATIVE_VIDEO（21.77%）和 Pinterest（22%）仍健康；建议砍长视频、回收部分预算。",
-  TWN:"从 20.58% 回落到 16.66%（🔴 t20），VID campaign 效率下滑（13.94%→8.23%）。IMG campaign（30.24%）与 NATIVE_IMAGE GIF 仍强；头部 publisher 10000001（疑似 in-house/SDK 库存）36% ROAS。建议把量更多压回 IMG。",
-  VNM:"🎉 最佳改善：9.25%→23.62%（🟢 t16）。IMG campaign（54.57%）与 IMAGE 素材（63.27%）拉动，VID 也升到 13.87%。Locket Widget 量最大但效率一般，可继续扩 IMG。",
+  MYS:"投放与上周持平，但 ROAS 滑落到 11.92%（接近 t13）。VIDEO 仍占 74% spend 而回收仅 5.89%；头部视频 273216（$1,144 / 5.87%）效率低。NATIVE_IMAGE/IMAGE（33–53%）高效，建议把预算更多向高回收的 IMAGE 素材倾斜。",
+  THA:"与 MYS 并列最大市场；ROAS 14.39%（接近 t15），较上周 14.14% 微升但仍差一口气。新短视频系列 TYDBGTH（9–18s）走量但回收偏低，NATIVE_IMAGE/IMAGE（47–86%）是效率亮点。",
+  IDN:"⚠️ 本周最大隐忧：spend 近翻倍（$2.5K→$4.4K）但 ROAS 从 21.87% 崩到 10.44%（🔴 t19）。115–119s 超长视频（273568、AINI MUSE_1）烧掉约 $1,240 却 <4% 回收。NATIVE_VIDEO（21.77%）仍健康；建议砍长视频、回收部分预算。",
+  TWN:"从 20.58% 回落到 16.66%（🔴 t20），VID campaign 效率下滑（13.94%→8.23%）。IMG campaign（30.24%）与 NATIVE_IMAGE GIF 仍强；建议把量更多压回 IMG。",
+  VNM:"🎉 最佳改善：9.25%→23.62%（🟢 t16）。IMG campaign（54.57%）与 IMAGE 素材（63.27%）拉动，VID 也升到 13.87%，可继续扩 IMG。",
   USA:"稳定达标 16.78%（t13），IMG campaign（25%）+ GIF banner 为主力，VID（8.50%）仍弱。与上周结构一致。",
   SGP:"⚠️ 持续垫底：4.17% vs 23%（🔴），较上周 9.12% 进一步走低。本周几乎全为 NATIVE_VIDEO（4.72%），仍无 IMAGE 素材；CPI $5.14 偏高。建议立即注入 IMG 素材并收紧出价。",
   KOR:"本周新开（冷启动），$117 spend / 8 安装 / CPI $14.60，暂无 D7 回收，量级太小，继续观察学习窗口。"
@@ -237,23 +285,19 @@ const DATA={
 }
 };
 
-// ============ HELPERS ============
 const usd=n=>'$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const intf=n=>Number(n).toLocaleString('en-US');
 const pc=n=>(n==null?'—':Number(n).toFixed(2)+'%');
 const tagOf=t=>{const v=t.indexOf('VIDEO')>=0;const sh=t.replace('NATIVE_','N_');return `<span class="tag ${v?'vid':'img'}">${sh}</span>`;};
 function statusOf(roas,t){const r=roas/t;if(r>=1)return{cls:'g',em:'🟢',txt:'达标'};if(r>=0.9)return{cls:'a',em:'🟡',txt:'接近达标'};return{cls:'r',em:'🔴',txt:'未达标'};}
 const roasCls=(roas,t)=>roas>=t?'pos':(roas<t*0.5?'neg':'');
-
 function wowPill(cur,prev,unit){
   if(prev==null)return '';
   if(unit==='pp'){const d=cur-prev;const cls=Math.abs(d)<0.5?'flat':(d>0?'up':'dn');const s=(d>0?'▲':d<0?'▼':'–');return `<span class="wow ${cls}">${s} ${Math.abs(d).toFixed(2)}pp WoW</span>`;}
   const d=(cur-prev)/prev*100;const cls=Math.abs(d)<2?'flat':(d>0?'up':'dn');const s=(d>0?'▲':d<0?'▼':'–');return `<span class="wow ${cls}">${s} ${Math.abs(d).toFixed(1)}% WoW</span>`;
 }
-
 function sortedCountries(p){return Object.keys(p.ov).sort((a,b)=>p.ov[b][0]-p.ov[a][0]);}
 
-// ============ RENDER ============
 let donut=null;
 function render(key){
   const p=DATA[key];const prev=p.prev?DATA[p.prev]:null;
@@ -263,7 +307,6 @@ function render(key){
   const nearCount=ccs.filter(c=>statusOf(p.ov[c][2],TARGETS[c]).cls==='a').length;
   const badCount=ccs.length-okCount-nearCount;
 
-  // ----- Overview (scorecards + country table + donut) -----
   let ov=`<div class="scorecards">
     <div class="sc"><div class="lbl">Ad Spend</div><div class="val">${usd(T.spend)}</div>${prev?wowPill(T.spend,prev.totals.spend):'<div class="meta">'+ccs.length+' 个国家投放</div>'}</div>
     <div class="sc"><div class="lbl">Installs</div><div class="val">${intf(T.installs)}</div>${prev?wowPill(T.installs,prev.totals.installs):''}<div class="meta">综合 CPI ${usd(cpi)}</div></div>
@@ -281,23 +324,19 @@ function render(key){
   <div class="insight"><b>一周小结：</b>${p.summary}</div></section>`;
   document.getElementById('overviewMount').innerHTML=ov;
 
-  // ----- Deep-dive tabs -----
   let tabs='';ccs.forEach((c,i)=>{const st=statusOf(p.ov[c][2],TARGETS[c]);
     tabs+=`<button class="cb-tab ${i===0?'active':''}" data-c="${c}"><span class="dot ${st.cls}"></span>${FLAG[c]||''} ${c}</button>`;});
   document.getElementById('cbTabs').innerHTML=tabs;
 
-  // ----- Deep-dive panes -----
   let panes='';ccs.forEach((c,i)=>{panes+=pane(p,c,i===0);});
   document.getElementById('paneMount').innerHTML=panes;
 
-  // tab handlers
   document.querySelectorAll('#cbTabs .cb-tab').forEach(tab=>tab.addEventListener('click',()=>{
     const c=tab.dataset.c;
     document.querySelectorAll('#cbTabs .cb-tab').forEach(x=>x.classList.toggle('active',x===tab));
     document.querySelectorAll('#paneMount .cb-pane').forEach(pn=>pn.classList.toggle('active',pn.id==='c-'+c));
   }));
 
-  // donut
   if(donut)donut.destroy();
   const palette=['#00d65a','#06b34e','#7af0b0','#0e8f44','#37c98a','#ffce4d','#7ac8f0','#577','#3a4d44','#2b6'];
   donut=new Chart(document.getElementById('spendDonut'),{type:'doughnut',
@@ -310,35 +349,28 @@ function pane(p,c,active){
   let h=`<div class="country-block cb-pane ${active?'active':''}" id="c-${c}">
     <div class="cb-head"><div class="ttl"><span class="flagdot"></span>${FLAG[c]||''} ${CNAME[c]||c} (${c})</div>
     <div class="cb-stats"><span>Spend <b>${usd(o[0])}</b></span><span>Installs <b>${intf(o[1])}</b></span><span>D7 ROAS <b>${pc(o[2])}</b></span><span>Target <b>${t}%</b> <span class="pill ${st.cls}">${st.em} ${st.txt}</span></span></div></div>`;
-  // campaigns
   if(p.camp[c]){h+=`<div class="sublabel">Campaign</div><div class="tbl-wrap"><table>
     <thead><tr><th>Campaign</th><th>Spend</th><th>Install</th><th>CPI</th><th>D7 ROAS</th><th>VT</th><th>达标</th></tr></thead><tbody>`;
     p.camp[c].forEach(r=>{const cs=statusOf(r[4],t);
       h+=`<tr><td class="name-cell">${r[0]}</td><td>${usd(r[1])}</td><td>${intf(r[2])}</td><td>${usd(r[3])}</td><td class="${roasCls(r[4],t)}">${pc(r[4])}</td><td>${pc(r[5])}</td><td><span class="pill ${cs.cls}">${cs.em}</span></td></tr>`;});
     h+=`</tbody></table></div>`;}
-  // creative type
   if(p.ctype[c]){h+=`<div class="sublabel">Creative Type</div><div class="tbl-wrap"><table>
     <thead><tr><th>Type</th><th>Spend</th><th>Install</th><th>D7 ROAS</th><th>VT</th></tr></thead><tbody>`;
     p.ctype[c].forEach(r=>{h+=`<tr><td>${tagOf(r[0])}</td><td>${usd(r[1])}</td><td>${intf(r[2])}</td><td class="${roasCls(r[3],t)}">${pc(r[3])}</td><td>${pc(r[4])}</td></tr>`;});
     h+=`</tbody></table></div>`;}
-  // top creatives
   if(p.crea&&p.crea[c]){h+=`<div class="sublabel">Top Creatives（素材 · type · size · 时长）</div><div class="tbl-wrap"><table>
     <thead><tr><th>Creative</th><th>Type</th><th>Size</th><th>Len</th><th>Spend</th><th>Inst</th><th>D7 ROAS</th><th>VT</th></tr></thead><tbody>`;
     p.crea[c].forEach(r=>{h+=`<tr><td class="name-cell">${r[0]}</td><td>${tagOf(r[1])}</td><td>${r[2]}</td><td>${r[3]==null?'—':r[3]+'s'}</td><td>${usd(r[4])}</td><td>${intf(r[5])}</td><td class="${roasCls(r[6],t)}">${pc(r[6])}</td><td>${pc(r[7])}</td></tr>`;});
     h+=`</tbody></table></div>`;}
-  // optional note
   if(p.note&&p.note[c]){h+=`<div class="note" style="margin-top:8px">${p.note[c]}</div>`;}
-  // publishers
   if(p.pub&&p.pub[c]){h+=`<div class="sublabel">Top Publishers</div><div class="tbl-wrap"><table>
     <thead><tr><th>Publisher</th><th class="bun">Bundle ID</th><th>Spend</th><th>Install</th><th>D7 ROAS</th><th>VT</th></tr></thead><tbody>`;
     p.pub[c].forEach(r=>{h+=`<tr><td class="name-cell">${r[0]}</td><td class="bun">${r[1]}</td><td>${usd(r[2])}</td><td>${intf(r[3])}</td><td class="${roasCls(r[4],t)}">${pc(r[4])}</td><td>${pc(r[5])}</td></tr>`;});
     h+=`</tbody></table></div>`;}
-  // insight
   if(p.ins&&p.ins[c]){h+=`<div class="note"><b>${c} 洞察：</b>${p.ins[c]}</div>`;}
   h+=`</div>`;return h;
 }
 
-// ============ INIT ============
 const sel=document.getElementById('periodSel');
 Object.keys(DATA).forEach((k,i)=>{const op=document.createElement('option');op.value=k;op.textContent=k;if(i===0)op.selected=true;sel.appendChild(op);});
 sel.addEventListener('change',()=>render(sel.value));
